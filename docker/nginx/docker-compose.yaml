@@ -1,0 +1,15 @@
+services:
+
+  httpd:
+    image: myapahce:v1
+    container_name: myapache1
+    ports:
+      - "8080:80"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana_server1
+    ports:
+      - "8087:3000"
+    
+  
