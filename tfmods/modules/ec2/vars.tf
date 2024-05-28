@@ -20,3 +20,8 @@ variable "instance_name" {
     type = string
     description = "instance name"
 }
+
+variable "key" {
+    type = string
+    description = "test-script"
+}
