@@ -1,5 +1,18 @@
-FROM nginx:latest
+FROM ubuntu:latest
 
-COPY ./index /usr/share/nginx/html
+RUN apt update -y && \
+    apt install apache2 -y && \
+    apt clean all
 
-EXPOSE 80
+#one way to copy a file from local machine to the container machine with direct path
+COPY ./index /var/www/html
+
+#another way to copy by cding into that working dir in the container
+WORKDIR /var/www/html
+
+COPY ./index .
+
+
+VOLUME /var/log/httpd
+
+CMD [ "apache2", "-D", "FOREGROUND" ]
